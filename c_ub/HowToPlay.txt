@@ -1,0 +1,25 @@
+// Quick Guide on how to get started.
+
+** The Destroyer **
+
+This is the most important function in this program, as it 
+basically destroy an entire city.
+The Destroyer accepts by standard two lists (City and Region) that
+read from two .dat files the input and are already implemented for you. 
+All you have to do is to add the id of the city you want to destroy
+and 'The Destroyer' does everything else for you. 
+
+** Aftermath **
+
+After destroying a city, the population of the destroyed city 
+will flee to the neighbour cities. Depending on the neighbor cities
+population size, each city gets the double amount of people from
+the destroyed city.
+
+** Well, which ID is which city? **
+
+Good question. Here is a list for stadt.dat with the ID for each city.
+
+ID ### City
+22     Nuernberg
+101    Wien 

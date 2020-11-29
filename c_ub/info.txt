@@ -1,0 +1,26 @@
+Aufgabe:
+
+
+programm stadt.dat gebiet.dat strasse.dat stadtname
+
+Die Stadt stadtname wird (wegen einer Katastrophe) evakuiert, d.h. aus
+der Liste gelöscht.  Die Einwohner verteilen sich auf die
+Nachbarstädte je nach Größe der Nachbarstadt, d.h. eine doppelt so
+große Nachbarstadt bekommt doppelt so viele Flüchtlinge.  Gib die neue
+Stadtliste in die Datei stadtneu.dat aus.
+
+
+
+// First, lets get all cities.
+
+[1, got it!]
+
+// Do sort all cities 
+[          ]
+// Destroy a city, therefor, find it first and get the population size
+[2, got it!]
+
+// Add the numbers of people to its neighbour cities based on the amount
+// of current people in there. 20.000k cities will get 40.000k people
+// and so on. 
+
