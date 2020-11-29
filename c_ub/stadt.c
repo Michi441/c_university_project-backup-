@@ -41,34 +41,6 @@ Street *newStreet(StreetList *streetList)
     return street;
 }
 
-void readStreetList(StreetList *streetList, char *fileName)
-{
-
-    FILE *file = fopen(fileName, "r");
-    // If there isn't a file, we can't read anything. Return error.
-    if (file == NULL)
-    {
-        perror(fileName);
-        exit(1);
-    }
-
-    // Integer used for the iteration.
-    int r;
-    // while r != EOF
-    while (r != EOF)
-    {
-
-        Street *street = newStreet(street);
-        r = fscanf(file, "%d %d %d",
-                   street->stadtStart, street->stadtEnd, street->distance);
-        //printStreet(s);
-
-        printf("%s\n", "!!!!!!!!!!!");
-    }
-
-    fclose(file);
-}
-
 // Same as above.
 Stadt *newStadt(StadtList *sl)
 {
@@ -95,7 +67,12 @@ void readStadtList(StadtList *sl, char *fileName)
     }
 
     // Integer used for the iteration.
-    int r;
+    int r = 0;
+    if (r != EOF)
+    {
+
+        printf("%s", "R IS EOF!!!");
+    }
     // while r != EOF
     while (r != EOF)
     {
@@ -104,6 +81,34 @@ void readStadtList(StadtList *sl, char *fileName)
         r = fscanf(file, "%d %100s %d %d %d",
                    &s->stadtId, s->name, &s->gebietId, &s->einwohner, &s->meeresHoehe);
         //printStadt(s);
+    }
+
+    fclose(file);
+}
+
+void readStreetList(StreetList *streetList, char *fileName)
+{
+
+    printf("%s", "got ya call!");
+    printf("%s", fileName);
+    FILE *file = fopen(fileName, "r");
+    // If there isn't a file, we can't read anything. Return error.
+    if (file == NULL)
+    {
+        perror(fileName);
+        exit(1);
+    }
+
+    // Integer used for the iteration.
+    int x = 0;
+    // while r != EOF
+
+    while (x != EOF)
+    {
+        Street *street = newStreet(streetList);
+        x = fscanf(file, "%d %d %d",
+                   &street->stadtStart, &street->stadtEnd, &street->distance);
+        printf("%d %d %d \n", street->stadtStart, street->stadtEnd, street->distance);
     }
 
     fclose(file);

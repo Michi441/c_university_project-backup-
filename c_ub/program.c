@@ -22,13 +22,12 @@ int main(int argc, char *argv[])
 
     RegionList *rl = newRegionList();
     Region *newRegion(RegionList * rl);
-
     StreetList *streetList = newStreetList();
     Street *newStreet(StreetList * streetList);
-
-        readRegionList(rl, argv[2]);
+    readRegionList(rl, argv[2]);
 
     readStreetList(streetList, argv[3]);
+
     printR(rl, 21);
 
     // Be careful, this function is no joke.
