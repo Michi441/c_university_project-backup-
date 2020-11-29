@@ -8,7 +8,7 @@
 // i did my own research. I hope its okay if i kinda 'reuse' this.
 StadtList *newStadtList()
 {
-    printf("executed newstadtlist");
+    //printf("executed newstadtlist");
     StadtList *sl = (StadtList *)malloc(sizeof(StadtList));
     sl->count = 0;
     sl->allocated = 10;
@@ -68,11 +68,7 @@ void readStadtList(StadtList *sl, char *fileName)
 
     // Integer used for the iteration.
     int r = 0;
-    if (r != EOF)
-    {
 
-        printf("%s", "R IS EOF!!!");
-    }
     // while r != EOF
     while (r != EOF)
     {
@@ -89,8 +85,6 @@ void readStadtList(StadtList *sl, char *fileName)
 void readStreetList(StreetList *streetList, char *fileName)
 {
 
-    printf("%s", "got ya call!");
-    printf("%s", fileName);
     FILE *file = fopen(fileName, "r");
     // If there isn't a file, we can't read anything. Return error.
     if (file == NULL)
@@ -108,7 +102,7 @@ void readStreetList(StreetList *streetList, char *fileName)
         Street *street = newStreet(streetList);
         x = fscanf(file, "%d %d %d",
                    &street->stadtStart, &street->stadtEnd, &street->distance);
-        printf("%d %d %d \n", street->stadtStart, street->stadtEnd, street->distance);
+        //printf("%d %d %d \n", street->stadtStart, street->stadtEnd, street->distance);
     }
 
     fclose(file);
@@ -141,7 +135,7 @@ Stadt *findStadt(StadtList *sl, int id)
 // destroy an entire city. Accepts a CityList, RegionList and an
 // integer id for the city you want to destroy
 
-void TheDestroyer(StadtList *sl, RegionList *rl, int id)
+void TheDestroyer(StadtList *sl, RegionList *rl, int id, StreetList *streetList)
 {
     // Used for an loop down below.
     int z;
@@ -187,7 +181,7 @@ void TheDestroyer(StadtList *sl, RegionList *rl, int id)
                 {
 
                     count++;
-                    printf("%s %s %d\n", sl->stadt[z]->name, " Population Size: ", sl->stadt[z]->gebietId);
+                    printf("%s %d %s %s %d\n", "ID: ", sl->stadt[z]->stadtId, sl->stadt[z]->name, " Population Size: ", sl->stadt[z]->gebietId);
 
                     sl2->stadt[sl2->count++] = sl->stadt[z];
                 }
@@ -195,9 +189,6 @@ void TheDestroyer(StadtList *sl, RegionList *rl, int id)
         }
     }
 
-    printf("%s %d\n", "new list size is", sl2->count);
-
-    printf("%s %s", "!!!!!", sl2->stadt[0]->name);
     printf("%101s %s %s %d %d \n",
            "the city we want to destroy is: ",
            s->name, " Population Size: ", s->gebietId, s->stadtId);
@@ -206,16 +197,44 @@ void TheDestroyer(StadtList *sl, RegionList *rl, int id)
 
     printf("%s %d \n", "Counter is...", count);
     printf("%s \n", "trying to find the closest city. Standby.");
-    printf("%s \n", "this indeed rocket science...");
+    printf("%s \n \n", "this indeed rocket science...");
 
+    GetAllDistancesFromCity(sl2, s, streetList);
     // LEFT OFF. Basically we need to somehow get the distance between each city
     // and iterate the population size to it
     // either with a new list?
     // and then we need to print it out. so yeah, almost finished.
 }
 
-void GetAllDistancesFromCity(StadtList *sl2, Stadt *s)
+void GetAllDistancesFromCity(StadtList *sl2, Stadt *s, StreetList *streetList)
 {
+
+    //Stadt *stadtToDestroy = findStadt(sl2, s);
+    // for (int i = 0; i < sl2->count; i++)
+    // {
+    //     for (int z = 0; z < streetList->count; z++)
+    //     {
+
+    //         if (streetList->street[z]->stadtStart == sl2->stadt[i]->stadtId)
+    //         {
+    //             printf("%s %d %s %s %s %d %s  %d \n", "Start ID:", streetList->street[z]->stadtStart, "City Name:", sl2->stadt[i]->name, "End ID", streetList->street[z]->stadtEnd, "Distance: ", streetList->street[z]->distance);
+    //         }
+    //     }
+    // }
+
+    printf("%s %s %s %d \n", "City to Destroy:", s->name, "Population Size:", s->gebietId);
+
+    for (int i = 0; i < streetList->count; i++)
+    {
+        if (streetList->street[i]->stadtStart == s->stadtId)
+        {
+            printf("%s %d  %s %d %s %d \n", "Start ID:", streetList->street[i]->stadtStart, "End ID:", streetList->street[i]->stadtEnd, "Distance:", streetList->street[i]->distance);
+        }
+        if (streetList->street[i]->stadtEnd == s->stadtId)
+        {
+            printf("%s %d  %s %d %s %d \n", "Start ID:", streetList->street[i]->stadtStart, "End ID:", streetList->street[i]->stadtEnd, "Distance:", streetList->street[i]->distance);
+        }
+    }
 }
 
 void printStadt(Stadt *s)
