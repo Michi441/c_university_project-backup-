@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     //printStadtWithId(sl, 22);
 
-    GetPopulationSize(sl, 22);
+    //GetPopulationSize(sl, 22);
 
     RegionList *rl = newRegionList();
     Region *newRegion(RegionList * rl);
@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
     printR(rl, 21);
 
     // Be careful, this function is no joke.
-    TheDestroyer(sl, rl, 116);
+    TheDestroyer(sl, rl, 3, streetList);
     //SortCitiesToRegion(rl, );
 }
