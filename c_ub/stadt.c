@@ -141,7 +141,7 @@ Stadt *findStadt(StadtList *sl, int id)
 // destroy an entire city. Accepts a CityList, RegionList and an
 // integer id for the city you want to destroy
 
-void TheDestroyer(StadtList *sl, RegionList *rl, int id)
+void TheDestroyer(StadtList *sl, RegionList *rl, int id, StreetList *streetList)
 {
     // Used for an loop down below.
     int z;
@@ -187,7 +187,7 @@ void TheDestroyer(StadtList *sl, RegionList *rl, int id)
                 {
 
                     count++;
-                    printf("%s %s %d\n", sl->stadt[z]->name, " Population Size: ", sl->stadt[z]->gebietId);
+                    printf("%s %d %s %s %d\n", "ID: ", sl->stadt[z]->stadtId, sl->stadt[z]->name, " Population Size: ", sl->stadt[z]->gebietId);
 
                     sl2->stadt[sl2->count++] = sl->stadt[z];
                 }
@@ -208,14 +208,29 @@ void TheDestroyer(StadtList *sl, RegionList *rl, int id)
     printf("%s \n", "trying to find the closest city. Standby.");
     printf("%s \n", "this indeed rocket science...");
 
+    GetAllDistancesFromCity(sl2, s, streetList);
     // LEFT OFF. Basically we need to somehow get the distance between each city
     // and iterate the population size to it
     // either with a new list?
     // and then we need to print it out. so yeah, almost finished.
 }
 
-void GetAllDistancesFromCity(StadtList *sl2, Stadt *s)
+void GetAllDistancesFromCity(StadtList *sl2, Stadt *s, StreetList *streetList)
 {
+
+    //Stadt *stadtToDestroy = findStadt(sl2, s);
+    // for (int i = 0; i < sl2->count; i++)
+    // {
+    //     for (int z = 0; z < streetList->count; z++)
+    //     {
+
+    //         if (streetList->street[z]->stadtStart == sl2->stadt[i]->stadtId)
+    //         {
+    //             printf("%d %d %d \n", streetList->street[z]->stadtStart, streetList->street[z]->stadtEnd, streetList->street[z]->distance);
+
+    //         }
+    //     }
+    // }
 }
 
 void printStadt(Stadt *s)

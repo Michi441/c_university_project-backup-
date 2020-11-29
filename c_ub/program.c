@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
     printR(rl, 21);
 
     // Be careful, this function is no joke.
-    TheDestroyer(sl, rl, 116);
+    TheDestroyer(sl, rl, 116, streetList);
     //SortCitiesToRegion(rl, );
 }

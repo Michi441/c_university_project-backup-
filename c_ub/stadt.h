@@ -38,11 +38,11 @@ StreetList *newStreetList();
 Street *newStreet(StreetList *streetList);
 void readStadtList(StadtList *sl, char *fileName);
 void printStadt(Stadt *s);
-void GetAllDistancesFromCity(StadtList *sl2, Stadt *s);
+void GetAllDistancesFromCity(StadtList *sl2, Stadt *s, StreetList *streetList);
 
 void readStreetList(StreetList *streetList, char *fileName);
 // Use this with cautions. Simulated destroyer for a city!
-void TheDestroyer(StadtList *sl, RegionList *rl, int id);
+void TheDestroyer(StadtList *sl, RegionList *rl, int id, StreetList *streetList);
 
 void printStadtWithId(StadtList *sl, int id);
 void GetPopulationSize(StadtList *sl, int id);
